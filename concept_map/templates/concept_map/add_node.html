@@ -1,0 +1,14 @@
+{% extends 'concept_map/base.html' %}
+
+{% block title %}Add a Node{% endblock %}
+
+{% block content %}
+    <h1>Add a Node</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Node</button>
+    </form>
+
+{% endblock %}

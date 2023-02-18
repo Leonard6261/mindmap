@@ -1,0 +1,37 @@
+{% extends 'concept_map/base.html' %}
+
+{% block title %}{{ node.name }}{% endblock %}
+
+{% block content %}
+    <h1>{{ node.name }}</h1>
+
+    <ul>
+        <li><strong>Category:</strong> {{ node.category }}</li>
+        <li><strong>Description:</strong> {{ node.description }}</li>
+    </ul>
+
+    <h2>Connections</h2>
+
+    {% if connections %}
+    <ul>
+        {% for connection in connections %}
+        <li>
+            <a href="{% url 'concept_map:node_detail' connection.related_node.pk %}">
+                {{ connection.related_node.name }}
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% else %}
+    <p>No connections yet.</p>
+    {% endif %}
+
+    <h2>Create a Connection</h2>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Connection</button>
+    </form>
+
+{% endblock %}

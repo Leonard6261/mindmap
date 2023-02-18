@@ -1,0 +1,19 @@
+{% extends 'concept_map/base.html' %}
+
+{% block title %}Concept Map{% endblock %}
+
+{% block content %}
+    <h1>Concept Map</h1>
+
+    <ul>
+        {% for node in nodes %}
+        <li>
+            <a href="{% url 'concept_map:node_detail' node.pk %}">
+                {{ node.name }}
+            </a>
+        </li>
+        {% empty %}
+        <li>No nodes yet.</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
