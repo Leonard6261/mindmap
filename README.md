@@ -41,9 +41,7 @@ demo/
 ├── manage.py
 
 └── concept_map/
-
     ├── __init__.py
-    
     ├── admin.py
     
     ├── apps.py
